@@ -9,7 +9,7 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(express.json());
 app.use(cors());
-app.use(helmet.frameguard())
+app.use(helmet.frameguard({ action: 'SAMEORIGIN' }));
 
 app.get("/", (req, res) => {
     res.send('Nombre: "Esdras Mefiboseth Morales Espina" , Carné: "0907-18-9909');

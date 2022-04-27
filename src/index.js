@@ -2,22 +2,13 @@ const express = require('express');
 const app = express();
 const mysqlConnection = require('../configurations/db-conf');
 const cors = require('cors');
-const helmet = require('helmet')
+
 
 
 app.set('port', process.env.PORT || 3000);
 
 app.use(express.json());
 app.use(cors());
-app.use(helmet.frameguard({ action: 'SAMEORIGIN' }));
-
-app.use(function (req, res, next) {
-    res.setHeader(
-      'Content-Security-Policy',
-      "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'"
-    );
-    next();
-  });
 
   
 app.get("/", (req, res) => {
